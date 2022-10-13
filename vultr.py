@@ -1,5 +1,5 @@
 from requests import Session
-from botnet import Botnet
+from manager import Manager
 from time import sleep
 from threading import Thread
 
