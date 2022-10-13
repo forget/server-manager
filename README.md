@@ -1,7 +1,4 @@
 # vultr-deployer
-A simple tool to manage your servers with ease.
+Navigate to vultr.py, input your API key and run the program. 
 
-# Requirements
-"1. Add in your 'VULTR API Key' in vultr.py"
-"2. Edit your instance label(s)."
-"3. Edit the number of instances you want to deploy."
+Feel free to make any changes to the program to suit your needs.
