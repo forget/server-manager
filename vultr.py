@@ -104,8 +104,9 @@ class VULTR:
                     if botnet.disconnect():
                         print(f"[#{index}] Successfully disconnected from {ip}!")
                         break
-                    
-                sleep(28800) # 8 hours
+                   
+                # Add your task here and let it sleep for however long you feel necessary
+                sleep(28800)
                 
                 # Download the files onto local PC
                 while 1:
