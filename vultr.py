@@ -82,12 +82,12 @@ class VULTR:
             
             sleep(90) # Give it some time to set up
             
-            botnet = Botnet(index, ip, password)
+            server = Manager(index, ip, password)
             
             try:
                 # Connect to the server
                 while 1:
-                    if botnet.connect():
+                    if server.connect():
                         print(f'[#{index}] Successfully connected to {ip}!')
                         break  
                     
@@ -95,13 +95,13 @@ class VULTR:
                 
                 # Upload files onto the server
                 while 1:
-                    if botnet.upload_files():
+                    if server.upload_files():
                         print(f"[#{index}] Files have been uploaded to {ip}!")
                         break
     
                 # Disconnect from the server
                 while 1:
-                    if botnet.disconnect():
+                    if server.disconnect():
                         print(f"[#{index}] Successfully disconnected from {ip}!")
                         break
                    
@@ -110,7 +110,7 @@ class VULTR:
                 
                 # Download the files onto local PC
                 while 1:
-                    if botnet.download_files():
+                    if server.download_files():
                         print(f"[#{index}] Successfully downloaded files from {ip}!")
                         break
                 
