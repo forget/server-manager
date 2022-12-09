@@ -37,13 +37,10 @@ class Manager:
             
             self.sftp.mkdir('files')
             for file in local_files:
-                if  "__pycache__" in file: pass
                 self.sftp.put(os.path.abspath(os.path.join(f'server_files/{self.num}/{file}')), f'files/{file}')
             for d in dirs:
-                if  "__pycache__" in file: pass
                 self.sftp.mkdir(f'files/{d}')
                 for file in os.listdir(f'server_files/{self.num}/{d}'):
-                    if  "__pycache__" in file: pass
                     self.sftp.put(os.path.abspath(os.path.join(f'server_files/{self.num}/{d}/{file}')), f'files/{d}/{file}')
             return True
         except:
