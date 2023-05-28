@@ -11,11 +11,7 @@ from library.manager import Manager
 class Logger(object):
     def __init__(self) -> None:
         self.manager: object = Manager()
-        
-        self.headers: object = {
-            "Content-Type": "application/json"
-        }
-                
+                        
         self.base_webhook: object = {
             'embeds': [{
                 "title": None,
@@ -33,35 +29,31 @@ class Logger(object):
         self.webhook_url: str = self.settings['webhook_url']
         self.operator: str = self.settings["current_operator"]
         
-    def log(self, message: str) -> None:
-        time = datetime.utcnow()
-        
+    def log(self, message: str) -> None:       
         webhook = deepcopy(self.base_webhook)
         webhook['embeds'][0]['color'] = randint(1, 16777214)
         webhook['embeds'][0]['title'] = f"Notification: {self.operator}"
         webhook['embeds'][0]['description'] = message
-        webhook['embeds'][0]['footer']['text'] = f'Timestamp: {time}'
+        webhook['embeds'][0]['footer']['text'] = f'Timestamp: {datetime.utcnow()}'
 
         
         if self.send_webhooks is True:
             try:
-                post(self.webhook_url, headers=self.headers, data=dumps(webhook))
+                post(self.webhook_url, headers={"Content-Type": "application/json"}, data=dumps(webhook))
             except:
                 pass     
         info(message)
 
-    def warning(self, message: str) -> None:
-        time = datetime.utcnow()
-        
+    def warning(self, message: str) -> None:        
         webhook = deepcopy(self.base_webhook)
         webhook['embeds'][0]['color'] = randint(1, 16777214)
         webhook['embeds'][0]['title'] = f"Warning: {self.operator}"
         webhook['embeds'][0]['description'] = message
-        webhook['embeds'][0]['footer']['text'] = f'Timestamp: {time}'
+        webhook['embeds'][0]['footer']['text'] = f'Timestamp: {datetime.utcnow()}'
 
         if self.send_webhooks is True:
             try:
-                post(self.webhook_url, headers=self.headers, data=dumps(webhook))
+                post(self.webhook_url, headers={"Content-Type": "application/json"}, data=dumps(webhook))
             except:
                 pass          
         warning(message)

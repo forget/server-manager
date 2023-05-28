@@ -29,8 +29,14 @@ class Assistant(object):
             return True
         except:
             return False
-        
+    
     def install_dependencies(self):
+        """
+            Installs dependencies on your remote server(s).
+            
+            e.g. Python3, screen, etc...
+        """
+        
         try:
             stdin, stdout, stderr = self.ssh.exec_command('sudo apt-get upgrade -y && sudo apt install python3-pip')           
             if not stdout.channel.recv_exit_status():
@@ -41,6 +47,10 @@ class Assistant(object):
             return False
             
     def upload_files(self):
+        """
+            Uploads your local files onto the remote server(s).
+        """
+        
         try:
             local_files = [f for f in os.listdir(f'files/{self.server_index}') if os.path.isfile(os.path.join(f'files/{self.server_index}', f))]
             dirs = [f for f in os.listdir(f'files/{self.server_index}') if os.path.isdir(os.path.join(f'files/{self.server_index}', f))]
@@ -63,6 +73,10 @@ class Assistant(object):
             return False
             
     def download_files(self):
+        """
+            Downloads files from your remote server(s), if updating files is required.
+        """
+        
         while True:
             try:
                 # Conect to the server
