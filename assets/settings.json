@@ -1,0 +1,8 @@
+{
+    "number_of_instances": 1,
+    "vultr_api_key": "",
+    "current_operator": "forget",
+    "server_name": "Personal Server",
+    "send_webhooks": true,
+    "webhook_url": ""
+}
