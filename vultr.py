@@ -34,7 +34,7 @@ class VULTR(object):
                               
     def create_instance(self, index: int) -> bool:
             data = {
-                'region': 'sea', # Seattle, US 
+                'region': 'fra', # Frankfurt, Germany
                 'plan': 'vhf-1c-1gb', # High frequency, 1 core 1 gb ram
                 'os_id': 387, # Ubuntu / 244 Debian
                 'label': '%s [#%s]' % (self.name, index)
@@ -134,11 +134,7 @@ class VULTR(object):
                 
                 sleep(5)
                 
-                # Initiate our task.
-                while 1:
-                    if session.initiate_claimer(index, self.operator):
-                        self.logger.log(f" #{index}: Autoclaimer started on {ip}!")
-                        break
+                # You can add a function to start your task.
                 
                 # Disconnect from the server.
                 while 1:
